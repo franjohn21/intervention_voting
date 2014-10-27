@@ -1,4 +1,3 @@
-
 get '/api/v0/cardpair' do 
 	cards = Card.all.to_a
 	card1 = cards.sample
@@ -9,9 +8,10 @@ get '/api/v0/cardpair' do
 end
 
 post '/api/v0/cardpair' do 
-	params[:winner_id]
-	params[:loser_id]
-	params[:both_suck]
+	puts "Params: #{params}"
+	winner = Card.find(params[:winner_id])
+	loser = Card.find(params[:loser_id])
+	CardPair.create(:card => winner, :loser => loser, :both_suck => params[:both_suck])
 end
 
 post '/api/v0/newcard' do 
