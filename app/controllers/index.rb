@@ -1,3 +1,8 @@
+before do 
+	response.headers['Access-Control-Allow-Origin'] = "*"
+end
+
+
 get '/api/v0/cardpair' do 
 	cards = Card.all.to_a
 	card1 = cards.sample
