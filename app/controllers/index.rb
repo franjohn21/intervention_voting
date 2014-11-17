@@ -4,7 +4,7 @@ end
 
 
 get '/api/v0/cardpair' do 
-	cards = Card.all.to_a
+	cards = Card.where(:created_by => "Intervention").to_a
 	card1 = cards.sample
 	cards.delete(card1)
 	card2 = cards.sample
@@ -20,6 +20,7 @@ post '/api/v0/cardpair' do
 end
 
 post '/api/v0/newcard' do 
+	Card.create(params)
 end
 
 after do
