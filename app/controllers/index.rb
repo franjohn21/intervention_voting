@@ -21,3 +21,7 @@ end
 
 post '/api/v0/newcard' do 
 end
+
+after do
+  ActiveRecord::Base.connection.close
+end
